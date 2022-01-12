@@ -12,9 +12,9 @@ import image8 from '../../static/images/slider/mac600x400.jpg'
 const Slider = () => {
     return (
         <div>
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+            <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
                         <picture>
                             <source srcSet={image1} media="(min-width: 1400px)" />
                             <source srcSet={image2} media="(min-width: 768px)" />
@@ -22,7 +22,7 @@ const Slider = () => {
                             <img srcSet={image4} alt="" className="d-block img-fluid" />
                         </picture>
                     </div>
-                    <div class="carousel-item">
+                    <div className="carousel-item">
                         <picture>
                         <source srcSet={image5} media="(min-width: 1400px)" />
                             <source srcSet={image6} media="(min-width: 768px)" />
@@ -30,7 +30,7 @@ const Slider = () => {
                             <img srcSet={image8} alt="" className="d-block img-fluid" />
                         </picture>
                     </div>
-                    <div class="carousel-item">
+                    <div className="carousel-item">
                         <picture>
                             <source srcSet={image1} media="(min-width: 1400px)" />
                             <source srcSet={image2} media="(min-width: 768px)" />
@@ -39,13 +39,13 @@ const Slider = () => {
                         </picture>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Next</span>
                 </a>
             </div>
         </div>

@@ -1,10 +1,16 @@
 import React from 'react';
-import Slider from '../Slider/Slider';
+import { Routes, Route } from "react-router-dom";
+import Home from "../Home/Home";
+import About from "../About/About";
+
 
 const RouterHandle = () => {
     return (
         <div>
-            <Slider/>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="about" element={<About />} />
+            </Routes>
         </div>
     );
 };
