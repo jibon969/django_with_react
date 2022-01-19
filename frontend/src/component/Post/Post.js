@@ -11,6 +11,10 @@ const Post = ()=>{
         width: 'auto'
     };
 
+    fetch('http://127.0.0.1:8000/api/post-list/')
+        .then(response => response.json())
+        .then(json => console.log(json));
+
     return(
         <div>
             <div className="container mt-2">
