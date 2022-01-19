@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
-from home.models import Slider
-from home.api.serializers import SliderSerializers
+from home.models import Slider, Post
+from home.api.serializers import SliderSerializers, PostSerializers
 from rest_framework.response import Response
 
 
@@ -13,3 +13,13 @@ def slider_list_api(request):
         return Response(serializers.data)
     except Slider.DoesNotExist:
         return Response({"There is no slider exits in database"}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def post_list(request):
+    try:
+        post = Post.objects.all()
+        serializers = PostSerializers(post, many=True)
+        return Response(serializers.data)
+    except Post.DoesNotExist:
+        return Response({"There is no Post exits in database"}, status=status.HTTP_404_NOT_FOUND)

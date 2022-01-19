@@ -1,16 +1,12 @@
 from rest_framework import serializers
-from home.models import Slider
+from home.models import Slider, Post
 
 
 class SliderSerializers(serializers.ModelSerializer):
-    extra_large_url = serializers.SerializerMethodField(
-        "get_extra_large_device_image")
-    large_device_url = serializers.SerializerMethodField(
-        "get_large_device_url_image")
-    medium_device_url = serializers.SerializerMethodField(
-        "get_medium_device_url_image")
-    small_device_url = serializers.SerializerMethodField(
-        "get_small_devices_url_image")
+    extra_large_url = serializers.SerializerMethodField("get_extra_large_device_image")
+    large_device_url = serializers.SerializerMethodField("get_large_device_url_image")
+    medium_device_url = serializers.SerializerMethodField("get_medium_device_url_image")
+    small_device_url = serializers.SerializerMethodField("get_small_devices_url_image")
 
     class Meta:
         model = Slider
@@ -37,3 +33,18 @@ class SliderSerializers(serializers.ModelSerializer):
 
     def get_small_devices_url_image(self, model):
         return "http://127.0.0.1:8000" + model.smallDevices.url
+
+
+class PostSerializers(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField("get_image_url")
+
+    class Meta:
+        model = Post
+        fields = [
+            'title',
+            'description',
+            'image'
+        ]
+
+    def get_image_url(self, model):
+        return "http://127.0.0.1:8000" + model.image.url
