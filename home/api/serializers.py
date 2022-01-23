@@ -41,10 +41,10 @@ class PostSerializers(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
+            'id',
             'title',
             'description',
             'image'
         ]
-
     def get_image_url(self, model):
         return "http://127.0.0.1:8000" + model.image.url

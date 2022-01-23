@@ -23,3 +23,13 @@ def post_list(request):
         return Response(serializers.data)
     except Post.DoesNotExist:
         return Response({"There is no Post exits in database"}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def post_details(request, id):
+    try:
+        post = Post.objects.get(pk=id)
+        serializers = PostSerializers(post)
+        return Response(serializers.data)
+    except Post.DoesNotExist:
+        return Response({"There is no Post exits in database"}, status=status.HTTP_404_NOT_FOUND)
