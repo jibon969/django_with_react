@@ -15,9 +15,11 @@ admin.site.register(Slider, SliderAdmin)
 
 
 class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ['title']}
+
     class Meta:
         model = Post
-        list_display = ['title']
+        list_display = ['title', 'slug']
 
 
 admin.site.register(Post, PostAdmin)

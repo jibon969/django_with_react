@@ -2,14 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom"
 
 const PostDetail = () =>{
+
     const [postDetail, setPostData] = useState([]);
-    const {id} = useParams();
+    const {slug} = useParams();
+
     useEffect(() => {
 
-        fetch(`http://127.0.0.1:8000/api/post-detail/${id}`)
+        fetch(`http://127.0.0.1:8000/api/post-detail/${slug}`)
             .then(res => res.json())
             .then(data => setPostData(data))
     }, []);
+
     return(
         <div>
             <h2>{postDetail.id}</h2>

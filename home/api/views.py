@@ -26,9 +26,9 @@ def post_list(request):
 
 
 @api_view(['GET'])
-def post_details(request, id):
+def post_details(request, slug):
     try:
-        post = Post.objects.get(pk=id)
+        post = Post.objects.get(slug__icontains=slug)
         serializers = PostSerializers(post)
         return Response(serializers.data)
     except Post.DoesNotExist:

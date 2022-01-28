@@ -12,7 +12,7 @@ const RouterHandle = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="post" element={<Post/>} />
-                <Route path="post-detail/:id/" element={<PostDetail/>} />
+                <Route path="post-detail/:slug/" element={<PostDetail/>} />
                 <Route path="about" element={<About />} />
             </Routes>
         </div>
