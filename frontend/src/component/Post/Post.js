@@ -27,7 +27,6 @@ const Post = ()=> {
                                 <img style={style} className="card-img-top" src={post.image} alt=""/>
                                 <div className="card-body">
                                     <h3 className="">{post.title}</h3>
-                                    <h3 className="">{post.id}</h3>
                                     <p>{post.description}</p>
                                     <Link to={`post-detail/${post.slug}`} className="btn btn-primary btn-block">More Detail</Link>
                                 </div>
