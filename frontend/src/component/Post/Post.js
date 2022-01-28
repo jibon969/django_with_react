@@ -29,7 +29,7 @@ const Post = ()=> {
                                     <h3 className="">{post.title}</h3>
                                     <h3 className="">{post.id}</h3>
                                     <p>{post.description}</p>
-                                    <Link to={`post-detail/${post.id}`} className="btn btn-primary btn-block">More Detail</Link>
+                                    <Link to={`post-detail/${post.slug}`} className="btn btn-primary btn-block">More Detail</Link>
                                 </div>
                             </div>
                         </div>

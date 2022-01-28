@@ -44,7 +44,9 @@ class PostSerializers(serializers.ModelSerializer):
             'id',
             'title',
             'description',
-            'image'
+            'image',
+            'slug',
         ]
+
     def get_image_url(self, model):
         return "http://127.0.0.1:8000" + model.image.url

@@ -8,5 +8,5 @@ from home.api.views import (
 urlpatterns = [
     path("slider-list/", slider_list_api, name="slider-list"),
     path("post-list/", post_list, name="post-list"),
-    path("post-detail/<int:id>/", post_details, name="post-detail")
+    path("post-detail/<slug:slug>/", post_details, name="post-detail")
 ]
