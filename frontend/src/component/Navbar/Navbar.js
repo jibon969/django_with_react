@@ -17,7 +17,7 @@ const Navbar = () =>{
                             <Link className="nav-link text-white" to="/">Home <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-white" to="about/">About</Link>
+                            <Link className="nav-link text-white" to="about-me/">About</Link>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"

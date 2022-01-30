@@ -7,13 +7,14 @@ import PostDetail from "../PostDetail/PostDetail";
 
 
 const RouterHandle = () => {
+
     return (
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="post" element={<Post/>} />
                 <Route path="post-detail/:slug/" element={<PostDetail/>} />
-                <Route path="about" element={<About />} />
+                <Route path="about-me/" element={<About />} />
             </Routes>
         </div>
     );
