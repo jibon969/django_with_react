@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import About from "../About/About";
 import Post from "../Post/Post";
 import PostDetail from "../PostDetail/PostDetail";
+import ContactMe from "../ContactMe/ContactMe";
 
 
 const RouterHandle = () => {
@@ -15,6 +16,7 @@ const RouterHandle = () => {
                 <Route path="post" element={<Post/>} />
                 <Route path="post-detail/:slug/" element={<PostDetail/>} />
                 <Route path="about-me/" element={<About />} />
+                <Route path="contact-me/" element={<ContactMe />} />
             </Routes>
         </div>
     );

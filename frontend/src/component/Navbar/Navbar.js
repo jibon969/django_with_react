@@ -20,19 +20,19 @@ const Navbar = () =>{
                             <Link className="nav-link text-white" to="about-me/">About</Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                            <Link className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dropdown
-                            </a>
+                            </Link>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
+                                <Link className="dropdown-item" href="#">Action</Link>
+                                <Link className="dropdown-item" href="#">Another action</Link>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">Something else here</a>
+                                <Link className="dropdown-item" href="#">Something else here</Link>
                             </div>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled text-white" href="#">Contact</a>
+                            <Link className="nav-link disabled text-white" to="contact-me">Contact</Link>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
