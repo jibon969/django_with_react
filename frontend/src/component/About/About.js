@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../Navbar/Navbar";
+import AboutMe from "../AboutMe/AboutMe";
 
 const About = () => {
     const [about, setAbout] = useState([]);
@@ -17,13 +18,10 @@ const About = () => {
                 <h3 className="text-center">About Me</h3>
                 <hr/>
                 <div className="row">
-                    {about.map((about) => (
-                        <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-lg-12 mb-4">
-                            <h3 className="">{about.name}</h3>
-                            <p>{about.position}</p>
-                            <p>{about.about_me}</p>
-                        </div>
-                    ))}
+                    {
+                        about.map(about => <AboutMe about={about} />)
+                    }
+
                 </div>
             </div>
         </div>
