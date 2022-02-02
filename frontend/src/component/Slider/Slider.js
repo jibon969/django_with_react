@@ -1,43 +1,50 @@
-import React from 'react';
-import image1 from '../../static/images/slider/2000x400.png'
-import image2 from '../../static/images/slider/1400x400.png'
-import image3 from '../../static/images/slider/800x400.png';
-import image4 from '../../static/images/slider/600x400.png'
-import image5 from '../../static/images/slider/mac1920x597.jpg'
-import image6 from '../../static/images/slider/mac1400x400.jpg'
-import image7 from '../../static/images/slider/mac800x400px.jpg'
-import image8 from '../../static/images/slider/mac600x400.jpg'
-
+import React, { useEffect, useState } from 'react';
 
 const Slider = () => {
+
+    const [sliderData, setSliderData] = useState([]);
+
+    // fetching the all AboutUs data from server
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/api/slider-list/')
+            .then(res => res.json())
+            .then(data => setSliderData(data))
+    }, []);
+
+
     return (
         <div>
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <picture>
-                            <source srcSet={image1} media="(min-width: 1400px)" />
-                            <source srcSet={image2} media="(min-width: 768px)" />
-                            <source srcSet={image3} media="(min-width: 576px)" />
-                            <img srcSet={image4} alt="" className="d-block img-fluid" />
-                        </picture>
-                    </div>
-                    <div className="carousel-item">
-                        <picture>
-                        <source srcSet={image5} media="(min-width: 1400px)" />
-                            <source srcSet={image6} media="(min-width: 768px)" />
-                            <source srcSet={image7} media="(min-width: 576px)" />
-                            <img srcSet={image8} alt="" className="d-block img-fluid" />
-                        </picture>
-                    </div>
-                    <div className="carousel-item">
-                        <picture>
-                            <source srcSet={image1} media="(min-width: 1400px)" />
-                            <source srcSet={image2} media="(min-width: 768px)" />
-                            <source srcSet={image3} media="(min-width: 576px)" />
-                            <img srcSet={image4} alt="" className="d-block img-fluid" />
-                        </picture>
-                    </div>
+                    {
+                        sliderData.map((slider) => (
+                            <div>
+
+                                {
+                                    slider.value == 1 ?
+                                        <div className="carousel-item active">
+                                            <picture>
+                                                <source srcSet={slider.extra_large_url} media="(min-width: 1400px)" />
+                                                <source srcSet={slider.large_device_url} media="(min-width: 768px)" />
+                                                <source srcSet={slider.medium_device_url} media="(min-width: 576px)" />
+                                                <img srcSet={slider.small_device_url} alt="" className="d-block img-fluid" />
+                                            </picture>
+                                        </div>
+                                        :
+                                        <div className="carousel-item">
+                                            <picture>
+                                                <source srcSet={slider.extra_large_url} media="(min-width: 1400px)" />
+                                                <source srcSet={slider.large_device_url} media="(min-width: 768px)" />
+                                                <source srcSet={slider.medium_device_url} media="(min-width: 576px)" />
+                                                <img srcSet={slider.small_device_url} alt="" className="d-block img-fluid" />
+                                            </picture>
+                                        </div>
+                                }
+                            </div>
+
+                        ))
+                    }
+
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
