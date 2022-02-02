@@ -34,8 +34,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
-    'home',
+    'home.apps.HomeConfig',
     'about.apps.AboutConfig',
+    'contact.apps.ContactConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

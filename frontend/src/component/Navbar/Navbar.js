@@ -1,43 +1,43 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 
 const Navbar = () =>{
     return(
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <Link to="/" className="navbar-brand text-white"><i className="fa fa-home"></i></Link>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
+
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link className="nav-link text-white" to="/">Home <span className="sr-only">(current)</span></Link>
+                            <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-white" to="about-me/">About</Link>
+                            <a className="nav-link text-white" href="#">Link</a>
                         </li>
                         <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                            <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dropdown
-                            </Link>
+                            </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" href="#">Action</Link>
-                                <Link className="dropdown-item" href="#">Another action</Link>
+                                <a className="dropdown-item" href="#">Action</a>
+                                <a className="dropdown-item" href="#">Another action</a>
                                 <div className="dropdown-divider"></div>
-                                <Link className="dropdown-item" href="#">Something else here</Link>
+                                <a className="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link disabled text-white" to="contact-me">Contact</Link>
+                            <a className="nav-link disabled text-white" href="#">Disabled</a>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
             </nav>
