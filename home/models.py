@@ -22,8 +22,21 @@ class Slider(models.Model):
         return self.title
 
 
+class Category(models.Model):
+    title = models.CharField(max_length=120)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+
+    def __str__(self):
+        return self.title
+
+
 class Post(models.Model):
     title = models.CharField(max_length=150)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.FileField()
     slug = models.SlugField(null=True, blank=True)
