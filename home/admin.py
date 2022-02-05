@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slider, Post
+from .models import Slider, Post, Category
 
 # Register Slider models is here.
 
@@ -12,6 +12,15 @@ class SliderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Slider, SliderAdmin)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Category
+        list_display = ['title']
+
+
+admin.site.register(Category, CategoryAdmin)
 
 
 class PostAdmin(admin.ModelAdmin):

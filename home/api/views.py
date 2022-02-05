@@ -17,6 +17,11 @@ def slider_list_api(request):
 
 @api_view(['GET'])
 def post_list(request):
+    """
+    http://127.0.0.1:8000/api/post-list/
+    :param request:
+    :return:
+    """
     try:
         post = Post.objects.all()
         serializers = PostSerializers(post, many=True)
