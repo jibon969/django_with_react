@@ -1,5 +1,6 @@
+from django.template.defaultfilters import truncatechars  # or truncatewords
 from rest_framework import serializers
-from home.models import Slider, Post
+from home.models import Slider, Post, Category
 
 
 class SliderSerializers(serializers.ModelSerializer):
@@ -35,8 +36,15 @@ class SliderSerializers(serializers.ModelSerializer):
         return "http://127.0.0.1:8000" + model.smallDevices.url
 
 
+class CategorySerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id', 'title')
+
+
 class PostSerializers(serializers.ModelSerializer):
     image = serializers.SerializerMethodField("get_image_url")
+    category = serializers.CharField(source='category.title')
 
     class Meta:
         model = Post
@@ -45,9 +53,14 @@ class PostSerializers(serializers.ModelSerializer):
             'title',
             'category',
             'description',
+            'short_description',
             'image',
             'slug',
         ]
 
     def get_image_url(self, model):
         return "http://127.0.0.1:8000" + model.image.url
+
+
+
+

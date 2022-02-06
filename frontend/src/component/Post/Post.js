@@ -24,10 +24,12 @@ const Post = ()=> {
                     {post.map((post) => (
                         <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-lg-4 mb-4">
                             <div className="card">
-                                <img style={style} className="card-img-top" src={post.image} alt=""/>
+                                <Link to={`post-detail/${post.slug}`}>
+                                    <img style={style} className="card-img-top img-fluid" src={post.image} alt=""/>
+                                </Link>
                                 <div className="card-body">
-                                    <h3 className="">{post.title}</h3>
-                                    <p>{post.description}</p>
+                                    <h4 className="text-capitalize">{post.title}</h4>
+                                    <p>{post.short_description}</p>
                                     <Link to={`post-detail/${post.slug}`} className="btn btn-primary btn-block">More Detail</Link>
                                 </div>
                             </div>

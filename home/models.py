@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import truncatechars  # or truncatewords
 from django_with_react.utils import unique_slug_generator
 # Create your models here.
 
@@ -48,3 +49,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_category_name(self):
+        return self.category.title
+
+    @property
+    def short_description(self):
+        return truncatechars(self.description, 30)
+
+
