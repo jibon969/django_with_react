@@ -1,0 +1,277 @@
+{% spaceless %}
+    {% load static %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Base{% endblock %} | Belasea</title>
+         <!-- Add Meta Data -->
+        {% if object %}
+            <!-- Meta Description & keyword and author name -->
+            <meta name="description" content="{{ object.meta_description }}">
+            <meta name="keyword" content="{{ object.focus_keyword }}">
+            <meta name="author" content="Mohibul Islam">
+            <meta name='designer' content='Jayed Hossain Jibon'>
+
+            <!-- Open Graph Protocol -->
+            <meta property="og:title" content="{{ object.title }}">
+            <meta property="og:description" content="{{ object.meta_description }}">
+            <meta property="og:url" content="https://belasea.com/">
+            {% if object.image %}
+                <meta property="og:image" content="{{ object.image.url }}">
+            {% else %}
+                <meta property="og:image" content="https://belasea.sgp1.digitaloceanspaces.com/static/images/slider/mac1400x400.jpg">
+            {% endif %}
+            <meta property="og:type" content="Website">
+            <meta property="og:site_name" content="Belasea">
+            <meta property="og:email" content="help.belasea@gmail.com">
+
+            <!-- Twitter for Websites -->
+            <meta name="twitter:card" content="summary_large_image"/>
+            <meta name="twitter:site" content="@BelaseaBD">
+            <meta name="twitter:creator" content="@BelaseaBD">
+            <meta name="twitter:title" content="{{ object.title }}">
+            <meta name="twitter:description" content="{{ object.meta_description }}">
+            {% if object.image %}
+                <meta name="twitter:image" content="{{ object.image.url }}">
+            {% else %}
+                <meta name="twitter:image" content="https://belasea.sgp1.digitaloceanspaces.com/static/images/slider/mac1400x400.jpg">
+            {% endif %}
+            <meta name="twitter:image:alt" content="This is a description of the image.">
+            <!--/ End twitter Cart -->
+        {% else %}
+
+            <!-- Meta Description & keyword and author name -->
+            <meta name="description" content="Buy a huge collection of authentic cosmetics & beauty products online at Belasea. The cosmetics & beauty products are affordable for any budget.">
+            <meta name="keyword" content="Cosmetics & beauty products, belasea BD, belasea, belasea fb, cosmetics, hair fall solution, Oily Skin Solution, Acne Treatment, Dry Skin Solution, Whitening Solution skin care, hair care, makeup, perfume, the body shop, mac, milani, Urban Decay, real techniques, Anastasia Beverly Hills, anafeli paris, nior, jordana, makeup revelution">
+            <meta name="author" content="Mohibul Islam">
+            <meta name='designer' content='Jayed Hossain Jibon'>
+
+            <!-- The Open Graph protocol -->
+            <meta property="og:title" content="Belasea | A home for authentic beauty products">
+            <meta property="og:description" content="Buy a huge collection of authentic cosmetics & beauty products online at Belasea.The cosmetics & beauty products are affordable for any budget.">
+            <meta property="og:url" content="https://belasea.com/">
+            <meta property="og:image" content="https://belasea.sgp1.digitaloceanspaces.com/static/images/slider/mac1400x400.jpg">
+            <meta property="og:type" content="Website">
+            <meta property="og:site_name" content="Belasea">
+            <meta property="og:email" content="help.belasea@gmail.com">
+
+            <!-- Twitter for Websites -->
+            <meta name="twitter:card" content="summary_large_image"/>
+            <meta name="twitter:site" content="@BelaseaBD">
+            <meta name="twitter:creator" content="@BelaseaBD">
+            <meta name="twitter:title" content="Belasea | A home for authentic beauty products">
+            <meta name="twitter:description" content="Buy a huge collection of authentic cosmetics & beauty products online at Belasea.The cosmetics & beauty products are affordable for any budget.">
+            <meta name="twitter:image" content="https://belasea.sgp1.digitaloceanspaces.com/static/images/slider/mac1400x400.jpg">
+            <meta name="twitter:image:alt" content="This is a description of the image.">
+        {% endif %}
+        <!-- Include css Library -->
+        <link type="image/png" rel="icon" href="{% static 'images/logo/belasea23.png' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/ui.css' %}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri" rel="stylesheet">
+        
+        {% block stylesheet %}{% endblock stylesheet %}
+
+    </head>
+     <body>
+
+        <!-- Header Section -->
+        <header class="section-header">
+            <section class="header-navigation">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand text-white text-uppercase" href="{% url 'home' %}">Belasea</a>
+                    <button class="navbar-toggler" style="border: 1px solid azure" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav mr-auto" id="blog">
+                            <!-------- By Skin Type ----->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{% url 'category' 'by-skin-type' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   By Skin Type
+                                </a>
+                                <div class="dropdown-menu blog_dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-skin-type' 'oily-skin-care' %}">Oily Skin Care</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-skin-type' 'dry-skin-care' %}">Dry Skin Care</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-skin-type' 'combination-skin-care' %}">Combination Skin Care</a>
+                                </div>
+                            </li>
+                            <!------ By Concern -------->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{% url 'category' 'by-concern' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   By Concern
+                                </a>
+                                <div class="dropdown-menu blog_dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'bighting-skin' %}">Bighting Skin</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'acne' %}">Acne</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'anti-aging' %}">Anti-aging</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'dark-circles' %}">Dark Circles</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'spot' %}">Spot</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'pore' %}">Pore</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'melasma' %}">Melasma</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'by-concern' 'hair-fall' %}">Hair Fall</a>
+                                </div>
+                            </li>
+                            <!------ Beauty Tips -------->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{% url 'category' 'beauty-tips' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Beauty Tips
+                                </a>
+                                <div class="dropdown-menu blog_dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'beauty-tips' 'makeup-tips' %}">Makeup Tips</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'beauty-tips' 'skin-care-tips' %}">Skin Care Tips</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'beauty-tips' 'beauty-hack' %}">Beauty Hack</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'beauty-tips' 'bridal-look' %}">Bridal Look</a>
+                                </div>
+                            </li>
+                            <!--------- Traveling ------->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{% url 'category' 'traveling' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Traveling
+                                </a>
+                                <div class="dropdown-menu blog_dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'traveling' 'inside-bangladesh' %}">Inside Bangladesh</a>
+                                    <a class="dropdown-item" href="{% url 'category-and-subcategory' 'traveling' 'international-story' %}">International Story</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase" href="{% url 'category' 'cooking' %}">Cooking</a>
+                            </li>
+                        </ul>
+                        <form method='GET'>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q" id="search_input"  value="{{ request.GET.q }}"  placeholder="Search here">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </section>
+        </header>
+        <!--/ End  Header Section -->
+
+        {% block content %}
+
+
+
+        {% endblock content %}
+
+        <!-- footer Section -->
+        <footer id="footer_section">
+            <div class="container-fluid">
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <aside>
+                                <h4>Bulk Purchase</h4>
+                                <ul class="list-unstyled">
+                                    <li class="list-inline-item"><a href="https://belaface.be/"  class="text-white btn btn-primary">Click Here</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <aside class="help">
+                                <h4>Help</h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="{% url 'about' %}">About Us</a></li>
+                                    <li class="mb-2"><a href="{% url 'contact' %}">Contact Us</a></li>
+                                    <li class="mb-2"><a href="{% url 'return-policy' %}">Return Policy</a></li>
+                                    <li class="mb-2"><a href="{% url 'privacy' %}">Security & Privacy</a></li>
+                                    <li class="mb-2"><a href="{% url 'terms-conditions' %}">Terms & Conditions</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <aside>
+                                <div class="social_button">
+                                    <h4>Social Media</h4>
+                                    <ul class="social-nav social3D_effect  social_media list-unstyled">
+                                        <li>
+                                            <a href="https://www.facebook.com/belasea.bd/" target="_blank" class="facebook">
+                                                <div class="front">
+                                                    <img src="{% static 'images/icon/facebook.png' %}" alt="Oops image not found" style="width: 30px">
+                                                </div>
+                                                <div class="back">
+                                                    <img src="{% static 'images/icon/facebook.png' %}" alt="Oops image not found" style="width: 30px">
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.youtube.com/channel/UCqnoPX5wWCdLAyC7cHGsEcg/" target="_blank" class="youtube_media">
+                                                <div class="front">
+                                                    <img src="{% static 'images/icon/youtube.svg' %}" alt="Oops image not found" style="width: 30px"></div>
+                                                <div class="back">
+                                                    <img src="{% static 'images/icon/youtube.svg' %}" alt="Oops image not found" style="width: 30px"></div>
+                                            </a>
+                                        </li>
+                                        <!--- Instagram link -->
+                                        <li>
+                                            <a href="https://www.instagram.com/belasea.bd/?hl=en" target="_blank" class="instagram">
+                                                <div class="front"><img src="{% static 'images/icon/instagram.png' %}" alt="Oops image not found" style="width: 30px"></div>
+                                                <div class="back"><img src="{% static 'images/icon/instagram.png' %}" alt="Oops image not found" style="width: 30px"></div>
+                                            </a>
+                                        </li>
+                                        <!-- linkedin link -->
+                                        <li>
+                                            <a href="#" target="_blank" class="linkedin">
+                                                <div class="front">
+                                                    <img src="{% static 'images/icon/linkedIn_logo.png' %}" alt="Oops image not found" style="width: 30px">
+                                                </div>
+                                                <div class="back">
+                                                    <img src="{% static 'images/icon/linkedIn_logo.png' %}" alt="Oops image not found" style="width: 30px;">
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                             <aside class="payment_section">
+                                <h4>Payment Methods</h4>
+                                <div class="payment_method">
+                                    <ul class="list-inline pt-2">
+                                        <li class="list-inline-item">
+                                            <img src="{% static 'images/logo/bkash.png' %}" alt="Oops image not found" style="width: 70px;" class="img-responsive">
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <img src="{% static 'images/logo/dutch_bangla.jpg' %}" alt="Oops image not found" style="width: 70px;" class="img-responsive">
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <img src="{% static 'images/logo/mastercard1.jpg' %}" alt="Oops image not found" style="width: 70px;" class="img-responsive">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col footer_bottom">
+                    <p class="text-center mt-3">Copyright © Belasea. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+
+        <!--- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'js/jquery.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/jquery-2.0.0.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/popper.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/script.js' %}" crossorigin="anonymous"></script>
+
+    </body>
+    </html>
+{% endspaceless %}
