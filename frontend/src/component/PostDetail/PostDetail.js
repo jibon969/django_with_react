@@ -33,7 +33,7 @@ const PostDetail = () =>{
                                     <img src={postDetail.image} alt="" className="img-fluid"  style={imageStyle}  />
                                     <h3 className="text-capitalize mt-2">{postDetail.title}</h3>
                                     <h3>{postDetail.category}</h3>
-                                    <p>{postDetail.description}</p>
+                                    <div dangerouslySetInnerHTML={{__html: postDetail.description}}/>
                                 </div>
                             </div>
                             <div className="col-sm-12 col-md-3 col-lg-3 col-xl-3">
