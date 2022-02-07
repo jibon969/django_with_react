@@ -8,6 +8,7 @@ import ContactMe from "../ContactMe/ContactMe";
 import Blog from "../Blog/Blog";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import BlogCategory from "../BlogCategory/BlogCategory";
 
 const RouterHandle = () => {
 
@@ -53,6 +54,13 @@ const RouterHandle = () => {
                     <div>
                         <Navbar/>
                         <Blog />
+                        <Footer/>
+                    </div>
+                } />
+                <Route path="blog-category/" element={
+                    <div>
+                        <Navbar/>
+                        <BlogCategory/>
                         <Footer/>
                     </div>
                 } />
