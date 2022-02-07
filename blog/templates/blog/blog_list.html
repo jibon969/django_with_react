@@ -1,0 +1,129 @@
+{% extends 'blog/base_blog.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}{{ page_title|title }}{% endblock title %}
+
+{% block content %}
+
+
+    <section id="blogSection">
+        <div class="container mt-4">
+            <div class="row-sm">
+                {% for obj in object_list %}
+                    <div class="col-sm-12 col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2 pb-md-2 mb-3">
+                        <div class="card">
+                            {% if obj.image %}
+                                <img src="{{ obj.image.url }}" alt="OOps image not found" class="img-fluid img-responsive" style="height: 200px; width: auto">
+                            {% else %}
+                                <img src="{% static 'images/blog/2.jpg' %}" alt="OOps image not found" class="img-fluid img-responsive">
+                            {% endif %}
+                            <div class="card-body">
+                                <a href="{% url 'blog-detail' obj.slug %}" class="card-title card-link h5">{{ obj.title|truncatechars:30 }}</a>
+                            </div>
+                            <div class="card-footer bg-transparent border-success">
+                                <a href="{% url 'blog-detail' obj.slug %}" class="card-link">Read More..</a>
+                                <small class="text-muted float-right">{{ obj.timestamp }}</small>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    {% if search %}
+                        <div class="col my-5">
+                            <h2 class="text-center text-black-50 mt-3">No result for {{ search }}</h2>
+                            <h5 class="text-center text-muted">Try checking your spelling or use more general terms</h5>
+                            <h3 class="text-center my-3">
+                                <a href="{% url 'blog' %}">Back to Blog list</a>
+                            </h3>
+                            <div style="margin-top: 160px"></div>
+                        </div>
+                    {% else %}
+                        <div class="col my-5">
+                            <h2 class="text-center text-black-50 mt-3 font-weight-bold mt-5">Remain with us for this upcoming topic</h2>
+                            <h5 class="text-center text-muted">Try see your spelling or use more general terms</h5>
+                            <h3 class="text-center my-3">
+                                <a href="{% url 'blog' %}">Back to Blog</a>
+                            </h3>
+                            <div style="margin-top: 160px"></div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <!--Pagination -->
+        <div class="container">
+            <div class="row">
+                {% if object_list %}
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
+                        <div class="float-right">
+                            <nav aria-label="Topics pagination">
+                                <ul class="pagination">
+                                    {% if object_list.number > 1 %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=1{% if request.GET.brand %}&brand=true{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.min %}&min={{ request.GET.min }}&max={{ request.GET.max }}{% endif %}{% if request.GET.soap %}&soap={{ request.GET.soap }}{% endif %}{% if request.GET.hill %}&hill={{ request.GET.hill }}{% endif %}{% if request.GET.jordana %}&jordana={{ request.GET.jordana }}{% endif %}{% if request.GET.mac %}&mac={{ request.GET.mac }}{% endif %}{% if request.GET.makeup %}&makeup={{ request.GET.makeup }}{% endif %}{% if request.GET.milani %}&milani={{ request.GET.milani }}{% endif %}{% if request.GET.nior %}&nior={{ request.GET.nior }}{% endif %}{% if request.GET.body_shop %}&body_shop={{ request.GET.body_shop }}{% endif %}{% if request.GET.decay %}&decay={{ request.GET.decay }}{% endif %}">
+                                                First
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">First</span>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if object_list.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ object_list.previous_page_number }}{% if request.GET.brand %}&brand=true{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.min %}&min={{ request.GET.min }}&max={{ request.GET.max }}{% endif %}{% if request.GET.soap %}&soap={{ request.GET.soap }}{% endif %}{% if request.GET.hill %}&hill={{ request.GET.hill }}{% endif %}{% if request.GET.jordana %}&jordana={{ request.GET.jordana }}{% endif %}{% if request.GET.mac %}&mac={{ request.GET.mac }}{% endif %}{% if request.GET.makeup %}&makeup={{ request.GET.makeup }}{% endif %}{% if request.GET.milani %}&milani={{ request.GET.milani }}{% endif %}{% if request.GET.nior %}&nior={{ request.GET.nior }}{% endif %}{% if request.GET.body_shop %}&body_shop={{ request.GET.body_shop }}{% endif %}{% if request.GET.decay %}&decay={{ request.GET.decay }}{% endif %}">
+                                                Previous
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">Previous</span>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for page_num in object_list.paginator.page_range %}
+                                        {% if object_list.number == page_num %}
+                                            <li class="page-item active">
+                                                <span class="page-link">
+                                                    {{ page_num }}
+                                                    <span class="sr-only">(current)</span>
+                                                </span>
+                                            </li>
+                                        {% elif page_num > object_list.number|add:'-3' and page_num < object_list.number|add:'3' %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ page_num }}{% if request.GET.brand %}&brand=true{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.min %}&min={{ request.GET.min }}&max={{ request.GET.max }}{% endif %}{% if request.GET.soap %}&soap={{ request.GET.soap }}{% endif %}{% if request.GET.hill %}&hill={{ request.GET.hill }}{% endif %}{% if request.GET.jordana %}&jordana={{ request.GET.jordana }}{% endif %}{% if request.GET.mac %}&mac={{ request.GET.mac }}{% endif %}{% if request.GET.makeup %}&makeup={{ request.GET.makeup }}{% endif %}{% if request.GET.milani %}&milani={{ request.GET.milani }}{% endif %}{% if request.GET.nior %}&nior={{ request.GET.nior }}{% endif %}{% if request.GET.body_shop %}&body_shop={{ request.GET.body_shop }}{% endif %}{% if request.GET.decay %}&decay={{ request.GET.decay }}{% endif %}">
+                                                    {{ page_num }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if object_list.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ object_list.next_page_number }}{% if request.GET.brand %}&brand=true{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.min %}&min={{ request.GET.min }}&max={{ request.GET.max }}{% endif %}{% if request.GET.soap %}&soap={{ request.GET.soap }}{% endif %}{% if request.GET.hill %}&hill={{ request.GET.hill }}{% endif %}{% if request.GET.jordana %}&jordana={{ request.GET.jordana }}{% endif %}{% if request.GET.mac %}&mac={{ request.GET.mac }}{% endif %}{% if request.GET.makeup %}&makeup={{ request.GET.makeup }}{% endif %}{% if request.GET.milani %}&milani={{ request.GET.milani }}{% endif %}{% if request.GET.nior %}&nior={{ request.GET.nior }}{% endif %}{% if request.GET.body_shop %}&body_shop={{ request.GET.body_shop }}{% endif %}{% if request.GET.decay %}&decay={{ request.GET.decay }}{% endif %}">Next</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">Next</span>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if object_list.number != object_list.paginator.num_pages %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ object_list.paginator.num_pages }}{% if request.GET.brand %}&brand=true{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.min %}&min={{ request.GET.min }}&max={{ request.GET.max }}{% endif %}{% if request.GET.soap %}&soap={{ request.GET.soap }}{% endif %}{% if request.GET.hill %}&hill={{ request.GET.hill }}{% endif %}{% if request.GET.jordana %}&jordana={{ request.GET.jordana }}{% endif %}{% if request.GET.mac %}&mac={{ request.GET.mac }}{% endif %}{% if request.GET.makeup %}&makeup={{ request.GET.makeup }}{% endif %}{% if request.GET.milani %}&milani={{ request.GET.milani }}{% endif %}{% if request.GET.nior %}&nior={{ request.GET.nior }}{% endif %}{% if request.GET.body_shop %}&body_shop={{ request.GET.body_shop }}{% endif %}{% if request.GET.decay %}&decay={{ request.GET.decay }}{% endif %}">Last</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">Last</span>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

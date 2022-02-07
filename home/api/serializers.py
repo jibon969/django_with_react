@@ -1,4 +1,3 @@
-from django.template.defaultfilters import truncatechars  # or truncatewords
 from rest_framework import serializers
 from home.models import Slider, Post, Category
 

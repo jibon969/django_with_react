@@ -37,12 +37,18 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'about.apps.AboutConfig',
     'contact.apps.ContactConfig',
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd Party Library
+    'ckeditor',         # Django CKEditor library
+    'embed_video',      # For youtube Videos
+    'import_export',
 ]
 
 MIDDLEWARE = [

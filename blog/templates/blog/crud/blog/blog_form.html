@@ -1,0 +1,91 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Blog Form {% endblock %}
+
+{% block content %}
+
+    <section id="blogForm">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2">
+                    <h4 class="text-center">
+                        <a href="{% url 'add-blog' %}" >Blog Form</a>
+                        <span class="text-danger mx-1">||</span>
+                        <a href="{% url 'blog-list' %}">Back to Blog</a>
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        {{ form.blog_title|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form.title|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <select name="category" class="form-control" required>
+                                            <option value="">Select Category</option>
+                                            {% for cat in blog_category %}
+                                                <option class="form-control" value="{{ cat.id }}">
+                                                    {{ cat }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <select name="sub_category" class="form-control">
+                                            <option value="">Select SubCategory</option>
+                                            {% for sub in blog_sub_category %}
+                                                <option class="form-control" value="{{ sub.id }}">
+                                                    {{ sub }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        {{ form.facebook_url|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{ form.instagram_url|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{ form.twitter_url|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        {{ form.linkedin_url|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form.image|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="editor1" rows="3" placeholder="Blog Description" name="description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-info btn-block">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,150 @@
+{% extends 'blog/base_blog.html' %}
+{% load static %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% block title %}{{ page_title.first|title}}{% endblock title %}
+
+{% block content %}
+
+
+    <section id="blogSection">
+        <div class="container-fluid">
+            <div class="row-sm">
+                <!-- Left Side -->
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 order-md-last order-lg-first mb-4">
+                    <div class="blog_left_part">
+                        {% if blog_video %}
+                            <!-- Exclusive -->
+                            <div class="card my-3">
+                                <h4 class="card-header">Exclusive Clips</h4>
+                            </div>
+                            {% for v in blog_video %}
+                                <div class="card my-3">
+                                    <div class="video_part">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            {% video v.video as my %}
+                                                <iframe class="embed-responsive-item" src="{{ my.url }}" allowfullscreen></iframe>
+                                            {% endvideo %}
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-title">{{ v.title }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <!-- End Exclusive -->
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- Main Content -->
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 order-first order-lg-first mb-4">
+                    <div class="blog_middle_part">
+                        <!-- First Now --->
+                        <div class="row-sm">
+                            <div class="col my-3">
+                                {% for first in first_post %}
+                                    <div class="card">
+                                        {% if  first.image %}
+                                            <a href="{% url 'blog-detail' first.slug %}">
+                                                <img class="card-img-top img-fluid img-responsive" src="{{ first.image.url }}" alt="Card image cap">
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'blog-detail' first.slug %}">
+                                                <img class="card-img-top img-fluid img-responsive" src="{% static 'images/blog/breaking-news.webp' %}" alt="Card image cap">
+                                            </a>
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <a href="{% url 'blog-detail' first.slug %}" class="card-title card-link h5">
+                                                {{ first.blog_title|truncatechars:70 }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Main sub title -->
+                        <div class="row-sm">
+                            {% for s in second_post %}
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                    <div class="card">
+                                        <a href="{% url 'blog-detail' s.slug %}">
+                                            {% if s.image %}
+                                                <img class="img-fluid img-responsive" src="{{ s.image.url }}" alt="Oops image not found">
+                                            {% else %}
+                                                <img class="img-fluid img-responsive" src="{% static 'images/blog/breaking-news.webp' %}" alt="Oops image not found">
+                                            {% endif %}
+                                        </a>
+                                        <div class="card-footer">
+                                            <a href="{% url 'blog-detail' s.slug %}" class="card-title card-link h6">
+                                                {{ s.blog_title|truncatechars:30 }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Bottom -->
+                        <div class="row-sm">
+                            <div class="col">
+                                <div class="card">
+                                    {% for th in third_post %}
+                                        <article class="itemlist">
+                                            <div class="row row-sm">
+                                                <aside class="col-sm-4 border-right">
+                                                    <div class="img-wrap">
+                                                        <a href="{% url 'blog-detail' th.slug %}">
+                                                            {% if th.image %}
+                                                                <img src="{{ th.image.url }}"  alt="Oops image not found" class="img-fluid img-responsive">
+                                                            {% else %}
+                                                                <img src="{% static 'images/blog/2.jpg' %}" alt="Oops image not found" class="img-md img-fluid img-responsive">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                </aside>
+                                                <div class="col-sm-8">
+                                                    <div class="text-wrap">
+                                                        <h5 class="blog_title_width mb-3">
+                                                            <a href="{% url 'blog-detail' th.slug %}" class="card-link">{{ th.blog_title|truncatechars:80 }}</a>
+                                                        </h5>
+                                                        <div class="{% url 'blog-detail' th.slug %}">
+                                                            <div class="float-left">{{ th.timestamp }}</div>
+                                                            <div class="float-right">
+                                                                <a href="{% url 'blog-detail' th.slug %}" class="btn-sm btn btn-outline-secondary">Read More</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Slide -->
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 order-md-first order-last order-first order-lg-last mb-4">
+                    <div class="blog_right_part">
+                        <!-- Advertisement Post -->
+                        {% for add in advertisement %}
+                            <div class="card my-3">
+                                {% if add.image %}
+                                    <img class="card-img-top img-fluid img-responsive" src="{{ add.image.url }}" alt="Card image cap">
+                                {% else %}
+                                     <img class="card-img-top img-fluid img-responsive" src="{% static 'images/blog/og-fox-news.webp' %}" alt="Card image cap">
+                                {% endif %}
+                                <div class="card-body">
+                                    <a href="#" class="card-title card-link h5">{{ add.title|truncatechars:50 }}</a>
+                                    <p class="card-text my-2">{{ add.text|truncatechars:100 }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<div class="margin_bottom"></div>
+{% endblock content %}
