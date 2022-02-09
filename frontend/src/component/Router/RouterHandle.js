@@ -8,6 +8,8 @@ import ContactMe from "../ContactMe/ContactMe";
 import Blog from "../Blog/Blog";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import BlogCategory from "../BlogCategory/BlogCategory";
+import Search from "../Search/Search";
 
 const RouterHandle = () => {
 
@@ -56,6 +58,20 @@ const RouterHandle = () => {
                         <Footer/>
                     </div>
                 } />
+                <Route path="blog-category/" element={
+                    <div>
+                        <Navbar/>
+                        <BlogCategory/>
+                        <Footer/>
+                    </div>}
+                />
+                <Route path="search/" element={
+                    <div>
+                        <Navbar/>
+                        <Search/>
+                        <Footer/>
+                    </div>}
+                />
             </Routes>
         </div>
     );

@@ -4,11 +4,11 @@ const Blog =()=>{
 
     const [blogData, setBlogData] = useState([]);
     useEffect(() => {
-
         fetch('http://127.0.0.1:8000/api/post-list/')
             .then(res => res.json())
             .then(data => setBlogData(data))
     }, []);
+
     if(blogData){
         return(
             <div>
