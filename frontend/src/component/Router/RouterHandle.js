@@ -9,6 +9,7 @@ import Blog from "../Blog/Blog";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import BlogCategory from "../BlogCategory/BlogCategory";
+import Search from "../Search/Search";
 
 const RouterHandle = () => {
 
@@ -62,8 +63,15 @@ const RouterHandle = () => {
                         <Navbar/>
                         <BlogCategory/>
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
+                <Route path="search/" element={
+                    <div>
+                        <Navbar/>
+                        <Search/>
+                        <Footer/>
+                    </div>}
+                />
             </Routes>
         </div>
     );
