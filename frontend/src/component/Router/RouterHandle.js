@@ -21,43 +21,43 @@ const RouterHandle = () => {
                         <Navbar/>
                         <Home />
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
                 <Route path="post" element={
                     <div>
                         <Navbar/>
                         <Post/>
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
                 <Route path="post-detail/:slug/" element={
                     <div>
                         <Navbar/>
                         <PostDetail/>
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
                 <Route path="about-me/" element={
                     <div>
                         <Navbar/>
                         <About />
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
                 <Route path="contact-me/" element={
                     <div>
                         <Navbar/>
                         <ContactMe />
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
                 <Route path="blog/" element={
                     <div>
                         <Navbar/>
                         <Blog />
                         <Footer/>
-                    </div>
-                } />
+                    </div>}
+                />
                 <Route path="blog-category/" element={
                     <div>
                         <Navbar/>
@@ -72,6 +72,7 @@ const RouterHandle = () => {
                         <Footer/>
                     </div>}
                 />
+
             </Routes>
         </div>
     );

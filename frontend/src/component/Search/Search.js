@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 
 const Search = () =>{
     const[data, setData] = useState([]);
@@ -19,8 +18,7 @@ const Search = () =>{
                 setOutput(output=>[...output, val])
             }
         })
-        }
-    );
+    });
 
     return(
         <div>
