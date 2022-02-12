@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Navbar from "../Navbar/Navbar";
 import AboutMe from "../AboutMe/AboutMe";
 
 const About = () => {
@@ -13,7 +12,6 @@ const About = () => {
 
     return (
         <div>
-            <Navbar/>
             <div className="container mt-2">
                 <h3 className="text-center">About Me</h3>
                 <hr/>
