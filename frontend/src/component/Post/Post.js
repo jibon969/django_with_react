@@ -22,7 +22,7 @@ const Post = ()=> {
                 <hr/>
                 <div className="row">
                     {post.map((post) => (
-                        <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-lg-4 mb-4">
+                        <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-lg-4 mb-4" key={post.slug}>
                             <div className="card">
                                 <Link to={`post-detail/${post.slug}`}>
                                     <img style={style} className="card-img-top img-fluid" src={post.image} alt=""/>
